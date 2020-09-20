@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("Plk.Blazor.DragDrop.Test")]
-namespace Plk.Blazor.DragDrop
+namespace Plk.Blazor.DragDrop.Services
 {
     internal class DragDropService<T>
     {
