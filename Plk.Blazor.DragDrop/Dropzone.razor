@@ -292,6 +292,31 @@
         }
     }
 
+    private void PlaceItem(TItem draggedOverItem, TItem activeItem)
+    {
+        var indexDraggedOverItem = Items.IndexOf((TItem)draggedOverItem);
+
+        var indexActiveItem = Items.IndexOf((TItem)activeItem);
+
+        if (indexActiveItem == -1) // item is new to the dropzone
+        {
+            //insert into new zone
+            Items.Insert(indexDraggedOverItem + 1, activeItem);
+            //remove from old zone
+            DragDropService.Items.Remove(activeItem);
+            // Change DragDropService Items link
+            DragDropService.Items = Items;
+        }
+        else
+        {
+            if (indexDraggedOverItem == indexActiveItem) return;
+
+            TItem tmp = Items[indexDraggedOverItem];
+            Items[indexDraggedOverItem] = Items[indexActiveItem];
+            Items[indexActiveItem] = tmp;
+        }
+    }
+
     // TODO: Visually show the groups into which the current dragged object can be moved
     public void OnGroupSet(string groupId)
     {
