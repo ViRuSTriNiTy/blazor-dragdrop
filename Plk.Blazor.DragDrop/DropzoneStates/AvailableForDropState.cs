@@ -82,7 +82,7 @@ namespace Plk.Blazor.DragDrop
             {
                 var activeItem = DragDropService.ActiveItem;
 
-                if (_dropzone.IsItemAccepted() == false)
+                if (_dropzone.IsItemAccepted(_dropzone.dragTargetItem) == false)
                 {
                     _dropzone.OnItemDropRejected.InvokeAsync(activeItem);
                     return;
@@ -111,7 +111,7 @@ namespace Plk.Blazor.DragDrop
 
             public override void OnSpacingDragEnter(int id)
             {
-                if (DropzoneMaxItemLimitReached() == false && _dropzone.IsItemAccepted())
+                if (DropzoneMaxItemLimitReached() == false && _dropzone.IsItemAccepted(_dropzone.dragTargetItem))
                 {
                     ChangeSpacerId(id);
                 }
