@@ -42,9 +42,9 @@ namespace Plk.Blazor.DragDrop
 
             protected void _defaultOnDragEnd()
             {
-                if (DragEnd != null)
+                if (_dropzone.DragEnd != null)
                 {
-                    DragEnd(DragDropService.ActiveItem);
+                    _dropzone.DragEnd(DragDropService.ActiveItem);
                 }
 
                 DragDropService.Reset();
